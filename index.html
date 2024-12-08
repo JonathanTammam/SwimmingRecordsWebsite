@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Swimming Record Details</title>
+    <style>
+        body { 
+            background-color: #0099ff;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        a {
+            color: #ffff00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Swimming Record Details</h1>
+    <img src="https://via.placeholder.com/600x300?text=Swimming+Pool" alt="Swimming Pool">
+    <p id="record-detail">Loading details...</p>
+    <a href="index.html">Go back to the index</a>
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var recordId = urlParams.get('record_id');
+
+        // Simulated record data
+        var records = {
+            "1": { name: "Michael Phelps", record: "Most Olympic Gold Medals - 23", year: 2016 },
+            "2": { name: "Katie Ledecky", record: "Fastest 800m Freestyle - 8:04.79", year: 2016 },
+            "3": { name: "Mark Spitz", record: "7 Gold Medals in a Single Olympics", year: 1972 }
+        };
+
+        var detailElement = document.getElementById("record-detail");
+        if (records[recordId]) {
+            detailElement.innerHTML = `
+                <h2>${records[recordId].name}</h2>
+                <p>Record: ${records[recordId].record}</p>
+                <p>Year Achieved: ${records[recordId].year}</p>
+            `;
+        } else {
+            detailElement.innerText = "Record not found.";
+        }
+    </script>
+</body>
+</html>
